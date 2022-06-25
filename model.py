@@ -12,7 +12,7 @@ from numpy.random import normal
 #history_fitness = []
 #fitness_av = [[], [], []]
 TIME_IN_DAY = 6
-DAYS_IN_WEEK = 6
+DAYS_IN_WEEK = 12
 
 
 @dataclass
@@ -290,6 +290,7 @@ def gna(mas_inp, config):
 config = SimpleNamespace(max_iter=200,
                          start_count=500,
                          wandb=True,
+                         log=False,
                          select_n=5,
                          prob_winner_gen_in_child=0.8,
                          prob_mutation_tt=0.1,
@@ -339,7 +340,7 @@ def tryall(count):
         plt.savefig(f'save/{i}.png')
 
 
-tryall(5)
+simplerun()
 """
 #plt.style.use('_mpl-gallery')
 
