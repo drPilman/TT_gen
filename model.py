@@ -13,6 +13,7 @@ from numpy.random import normal
 #fitness_av = [[], [], []]
 TIME_IN_DAY = 6
 DAYS_IN_WEEK = 12
+TIME_MAX = TIME_IN_DAY * DAYS_IN_WEEK - 1
 
 
 @dataclass
@@ -81,7 +82,7 @@ class Timetable(list):
             super().__init__()
             for inp in mas_inp:
                 self.extend([
-                    Chromosoma(randint(0, 35), choice(rooms[inp.tip]))
+                    Chromosoma(randint(0, TIME_MAX), choice(rooms[inp.tip]))
                     for i in range(inp.count)
                 ])
 
@@ -234,7 +235,7 @@ class Population(list):
             if probability(s):
                 for chromo, info in zip(timetable, timetable.TYPE):
                     if probability(ss):
-                        chromo.time = randint(0, 35)
+                        chromo.time = randint(0, TIME_MAX)
 
                     if probability(ss):
                         chromo.room = choice(rooms[info.tip])
@@ -246,7 +247,7 @@ class Population(list):
             if probability(s):
                 for chromo, info in zip(timetable, timetable.TYPE):
                     if probability(ss):
-                        chromo.time = randint(0, 35)
+                        chromo.time = randint(0, TIME_MAX)
 
                     if probability(ss):
                         chromo.room = choice(rooms[info.tip])
